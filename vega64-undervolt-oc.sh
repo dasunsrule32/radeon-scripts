@@ -16,7 +16,7 @@
 #  how far you overclock.
 #
 #  authored-by: Aaron Echols
-#        email: atechols@gmail.com
+#        email: atechols at gmail dot com
 #
 # NOTES:
 #

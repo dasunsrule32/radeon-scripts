@@ -2,7 +2,7 @@
 # Script to set Sapphire RX Vega 64 (Reference) fan curve.
 #
 #  authored-by: Aaron Echols
-#        email: atecholS@gmail.com
+#        email: atechols at gmail dot com
 #
 #  NOTES:
 #
