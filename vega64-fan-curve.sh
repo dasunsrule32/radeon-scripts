@@ -19,7 +19,7 @@
 
 # Variables:
 # ----------
-DEBUG=1
+DEBUG=0
 SYSPATH="/sys/devices/pci0000:00/0000:00:03.1/0000:0b:00.0/0000:0c:00.0/0000:0d:00.0"
 AMDGPUPMINFO=/sys/kernel/debug/dri/0/amdgpu_pm_info
 
