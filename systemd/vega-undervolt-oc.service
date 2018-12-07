@@ -1,0 +1,9 @@
+[Unit]
+Description=AMD Undervolt/Overclock Control
+After=network.service
+
+[Service]
+ExecStart=/usr/local/bin/vega-undervolt-oc
+
+[Install]
+WantedBy=default.target

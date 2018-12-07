@@ -11,6 +11,10 @@
 #  Please contribute to the upstream author at:
 #  https://github.com/dasunsrule32/radeon-scripts
 #
+#  Install Instructions:
+#
+#  https://github.com/dasunsrule32/radeon-scripts/blob/master/systemd/INSTALL-vega-undervolt-oc.md
+#
 
 # Variables:
 # ----------
