@@ -19,3 +19,12 @@ Set:
 
       DEBUG=1
       sudo systemctl start vega-underclock-oc.service
+
+To load in settings, simply:
+
+      sudo systemctl start vega-underclock-oc.service
+
+NOTE: I recommend disabling the service while testing, so a reboot won't
+      set bad settings on boot.
+
+      sudo systemctl disable vega-underclock-oc.service
