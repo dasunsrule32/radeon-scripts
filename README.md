@@ -12,7 +12,7 @@ Undervolt/OC Vega cards:
   I've set this to some sane defaults that I know work on my card
   (Sapphire Radeon RX Vega 64). The cooler isn't the best on the
   reference card, but these settings keep the speeds in the 1500Mhz
-  - 1600Mhz range. You may need to tweak your particular card more
+  to 1600Mhz range. You may need to tweak your particular card more
   to get decent performance.
 
   You can use this script to overclock your card as well. Adjust
