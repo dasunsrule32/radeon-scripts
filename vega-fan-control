@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Script to conrol AMD Vega card fans.
+# Script to control AMD Vega card fans.
 #
 #  authored-by: Aaron Echols
 #        email: atechols at gmail dot com
