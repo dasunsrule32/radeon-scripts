@@ -51,7 +51,7 @@ Undervolt/OC Sapphire RX Vega 64 (Reference):
   * Add error checking
   * Add additional devices
 
-# vega64-fan-curve.sh notes
+# vega-fan-curve.sh notes
 
 Script to set Sapphire RX Vega 64 (Reference) fan curve.
 
