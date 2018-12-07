@@ -82,6 +82,12 @@ NOTES:
       8[0-6]) FANRPM=3000 ;;
            *) FANRPM=3300 ;;
      esac
+  
+  To watch temperatures, simply enable `DEBUG` in the script if running it manually.
+  You can also watch the temps via sysfs and use the following command:
+  
+        SYSPATH=$(find /sys/devices -name fan1_target 2>/dev/null | sed 's|/fan1_target||g' |head -n1) ; AMDGPUPMINFO=/sys/kernel/debug/dri/0/amdgpu_pm_info
+        watch -n 3 "sudo cat $AMDGPUPMINFO|grep 'GPU Temperature' ; cat $SYSPATH/fan1_target"
 
 TODO:
 
