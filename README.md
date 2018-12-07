@@ -50,8 +50,8 @@ Undervolt/OC Sapphire RX Vega 64 (Reference):
 
   * You can check the currently loaded settings by running the following:
 
-      SYSPATH=$(find /sys/devices -name pp_od_clk_voltage 2>/dev/null | sed 's|/pp_od_clk_voltage||g' |head -n1)
-      cat $SYSPATH/pp_od_clk_voltage
+        SYSPATH=$(find /sys/devices -name pp_od_clk_voltage 2>/dev/null | sed 's|/pp_od_clk_voltage||g' |head -n1)
+        cat $SYSPATH/pp_od_clk_voltage
  
  Command format:
 
