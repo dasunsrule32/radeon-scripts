@@ -10,3 +10,12 @@ You can monitor the service now, by using the following command(s):
 
       systemctl status vega-fan-control.service
       watch -n 5 journalctl -n -b -u vega-fan-control.service
+      
+To enable debug for the above `journalctl` command, do the following:
+
+      sudo vi /usr/local/bin/vega-fan-control
+
+Set:
+
+      DEBUG=1
+      sudo systemctl start vega-fan-control.service
