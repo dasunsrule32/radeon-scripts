@@ -88,3 +88,5 @@ NOTES:
   
         SYSPATH=$(find /sys/devices -name fan1_target 2>/dev/null | sed 's|/fan1_target||g' |head -n1) ; AMDGPUPMINFO=/sys/kernel/debug/dri/0/amdgpu_pm_info
         watch -n 3 "sudo cat $AMDGPUPMINFO|grep 'GPU Temperature' ; cat $SYSPATH/fan1_target"
+        
+* Install Notes for vega-fan-control can be found [here](https://github.com/dasunsrule32/radeon-scripts/blob/master/systemd/INSTALL-vega-fan-curve.md).
