@@ -22,12 +22,12 @@ AMDGPUPMINFO=/sys/kernel/debug/dri/0/amdgpu_pm_info
 # ----------
 # Echo a string value that is passed
 echo_text() {
-   echo >&2 "$@";
+   echo -e >&2 "$@";
 }
 
 # Restore default PWM settings on exit:
 pwm_default() {
-   echo_text "Restoring PWM defaults"
+   echo_text "\nRestoring PWM defaults"
    echo "2" > "$SYSPATH/pwm1_enable"
    if [ $DEBUG = 1 ]; then
       cat $SYSPATH/pwm1_enable
