@@ -1,7 +1,7 @@
 # radeon-scripts
 Scripts to manage various aspects of the AMD line of cards in Linux.
 
-# vega-undervolt-oc.sh notes
+# vega-undervolt-oc notes
 
 Undervolt/OC Vega cards:
 
@@ -64,7 +64,7 @@ Undervolt/OC Vega cards:
 
   * Add error checking
 
-# vega-fan-curve.sh notes
+# vega-fan-curve notes
 
 Script to set Sapphire RX Vega 64 (Reference) fan curve.
 
