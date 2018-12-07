@@ -1,7 +1,7 @@
 # radeon-scripts
 Scripts to manage various aspects of the AMD line of cards in Linux. These currently only have been tested on the Sapphire Radeon RX Vega 64 (Reference) card.
 
-# vega64-undervolt-oc.sh notes
+# vega-undervolt-oc.sh notes
 
 Undervolt/OC Sapphire RX Vega 64 (Reference):
 
