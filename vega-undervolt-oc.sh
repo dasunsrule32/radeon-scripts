@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # Script to Undervolt/Overclock AMD Vega cards.
 #
