@@ -28,6 +28,9 @@ echo_text() {
 pwm_default() {
    echo_text "Restoring PWM defaults"
    echo "2" > "$SYSPATH/pwm1_enable"
+   if [ $DEBUG = 1 ]; then
+      cat $SYSPATH/pwm1_enable
+   fi
 }
 
 # Main body:
