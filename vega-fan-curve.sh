@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # Script to set AMD Vega card fan curves.
 #
