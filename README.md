@@ -63,7 +63,6 @@ Undervolt/OC Vega cards:
  TODO:
 
   * Add error checking
-  * ~~Add additional devices~~
 
 # vega-fan-curve.sh notes
 
@@ -92,6 +91,4 @@ NOTES:
 
 TODO:
 
-  * Fix trap
   * Add more error checking
-  * ~~Possibly expand further into additional cards~~
