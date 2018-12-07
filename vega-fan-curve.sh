@@ -13,21 +13,21 @@
 
 # Variables:
 # ----------
-DEBUG=1
+DEBUG=0
 SYSPATH=`find /sys/devices -name fan1_target 2>/dev/null | sed 's|/fan1_target||g' |head -n1`
 AMDGPUPMINFO=/sys/kernel/debug/dri/0/amdgpu_pm_info
 
 # Functions:
 # ----------
+# Echo a string value that is passed
+echo_text() {
+   echo >&2 "$@";
+}
+
 # Restore default PWM settings on exit:
 pwm_default() {
    echo_text "Restoring PWM defaults"
    echo "2" > "$SYSPATH/pwm1_enable"
-}
-
-# Echo a string value that is passed
-echo_text() {
-   echo >&2 "$@";
 }
 
 # Main body:
@@ -41,7 +41,7 @@ if [ $DEBUG = 1 ]; then
    echo_text "Hit ctrl-c to exit..."
 fi
 
-while : 
+while :
 do
    # Get GPU temperatures:
    GPUTEMP=`cat $AMDGPUPMINFO|grep "GPU Temperature"|awk '{print $3}'`
