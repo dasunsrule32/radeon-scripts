@@ -19,8 +19,8 @@
 
 # Variables:
 # ----------
-DEBUG=0
-SYSPATH="/sys/devices/pci0000:00/0000:00:03.1/0000:0b:00.0/0000:0c:00.0/0000:0d:00.0"
+DEBUG=1
+SYSPATH=`find /sys/devices -name fan1_target 2>/dev/null | sed 's|/fan1_target||g' |head -n1`
 AMDGPUPMINFO=/sys/kernel/debug/dri/0/amdgpu_pm_info
 
 # Functions:
@@ -28,7 +28,7 @@ AMDGPUPMINFO=/sys/kernel/debug/dri/0/amdgpu_pm_info
 # Restore default PWM settings on exit:
 pwm_default() {
    echo_text "Restoring PWM defaults"
-   echo "2" > "$SYSPATH/hwmon/hwmon0/pwm1_enable"
+   echo "2" > "$SYSPATH/pwm1_enable"
 }
 
 # Echo a string value that is passed
@@ -39,7 +39,7 @@ echo_text() {
 # Main body:
 # ----------
 # Set PWM to manual control:
-echo "1" > "$SYSPATH/hwmon/hwmon0/pwm1_enable"
+echo "1" > "$SYSPATH/pwm1_enable"
 
 # On exit set default fan controls:
 trap "pwm_default" EXIT 
@@ -64,7 +64,7 @@ do
    esac
 
    # Set the RPM in the sys device for AMD fancontrol:
-   echo "$FANRPM" > "$SYSPATH/hwmon/hwmon0/fan1_target"
+   echo "$FANRPM" > "$SYSPATH/fan1_target"
 
    # Wait 3 seconds to re-evaluate temperatures:
    sleep 3s
