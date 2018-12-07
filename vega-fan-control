@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Script to set AMD Vega card fan curves.
+# Script to conrol AMD Vega card fans.
 #
 #  authored-by: Aaron Echols
 #        email: atechols at gmail dot com
@@ -13,7 +13,7 @@
 #
 #  Install Instructions:
 #
-#  https://github.com/dasunsrule32/radeon-scripts/blob/master/systemd/INSTALL-vega-fan-curve.md
+#  https://github.com/dasunsrule32/radeon-scripts/blob/master/systemd/INSTALL-vega-fan-control.md
 #
 
 # Variables:

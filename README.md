@@ -64,7 +64,7 @@ Undervolt/OC Vega cards:
 
   * Add error checking
 
-# vega-fan-curve notes
+# vega-fan-control notes
 
 Script to set Sapphire RX Vega 64 (Reference) fan curve.
 
@@ -75,12 +75,12 @@ NOTES:
   
      case $GPUTEMP in
       3[0-9]) FANRPM=1000 ;;
-      4[0-9]) FANRPM=1200 ;;
+      4[0-9]) FANRPM=1300 ;;
       5[0-9]) FANRPM=1700 ;;
       6[0-9]) FANRPM=2200 ;;
-      7[0-9]) FANRPM=2700 ;;
-      8[0-6]) FANRPM=3000 ;;
-           *) FANRPM=3300 ;;
+      7[0-9]) FANRPM=2800 ;;
+      8[0-6]) FANRPM=3100 ;;
+           *) FANRPM=3400 ;;
      esac
   
   To watch temperatures, simply enable `DEBUG` in the script if running it manually.
