@@ -53,7 +53,7 @@
 # Variables:
 # ----------
 DEBUG=0
-SYSPATH="/sys/devices/pci0000:00/0000:00:03.1/0000:0b:00.0/0000:0c:00.0/0000:0d:00.0"
+SYSPATH=`find /sys/devices -name pp_od_clk_voltage 2>/dev/null | sed 's|/pp_od_clk_voltage||g' |head -n1`
 
 # Main body:
 # ----------
