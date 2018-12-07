@@ -72,4 +72,10 @@ do
       echo_text "GPU Temp: $GPUTEMP"
       echo_text " Fan RPM: $FANRPM"
    fi
+   # Workaround for issue: https://github.com/dasunsrule32/radeon-scripts/issues/3
+   GET_PWM1=`cat $SYSPATH/pwm1_enable`
+   if [ "$GET_PWM1" == 2 ]; then
+      echo "1" > "$SYSPATH/pwm1_enable"
+      echo_text "Re-enabling fan control"
+   fi
 done
