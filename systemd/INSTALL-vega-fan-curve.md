@@ -9,4 +9,4 @@
 You can monitor the service now, by using the following command(s):
 
       systemctl status vega-fan-curve.service
-      journalctl -u vega-fan-curve.service
+      watch -n 5 journalctl -n -b -u vega-fan-curve.service
