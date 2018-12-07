@@ -1,20 +1,14 @@
 #
-# Script to set Sapphire RX Vega 64 (Reference) fan curve.
+# Script to set AMD Vega card fan curves.
 #
 #  authored-by: Aaron Echols
 #        email: atechols at gmail dot com
 #
 #  NOTES:
 #
-#  I've only tested this and currently use it on my current
-#  card that I own. I'm sharing since I thought it would be
-#  useful for other users. 
-#
-#  TODO:
-#
-#   * Fix trap
-#   * Add more error checking
-#   * Possibly expand further into additional cards
+#  This script has been released under the GNU GENERAL PUBLIC LICENSE.
+#  Please contribute to the upstream author at:
+#  https://github.com/dasunsrule32/radeon-scripts
 #
 
 # Variables:
