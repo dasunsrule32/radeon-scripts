@@ -79,6 +79,7 @@ NOTES:
   desired RPM for each temperature range.
   
      case $GPUTEMP in
+      2[0-9]) FANRPM=400  ;;
       3[0-9]) FANRPM=1000 ;;
       4[0-9]) FANRPM=1300 ;;
       5[0-9]) FANRPM=1700 ;;
