@@ -96,4 +96,4 @@ NOTES:
 
 Install Notes:
 
-  * Install Notes for vega-fan-control can be found [here](https://github.com/dasunsrule32/radeon-scripts/blob/master/systemd/INSTALL-vega-fan-curve.md).
+  * Install Notes for vega-fan-control can be found [here](https://github.com/dasunsrule32/radeon-scripts/blob/master/systemd/INSTALL-vega-fan-control.md).
