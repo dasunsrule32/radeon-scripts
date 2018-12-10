@@ -1,3 +1,16 @@
+#
+# Systemd script to autostart and control vega-fan-control.
+#
+#  authored-by: Aaron Echols
+#        email: atechols at gmail dot com
+#
+#  NOTES:
+#
+#  This script has been released under the GNU GENERAL PUBLIC LICENSE.
+#  Please contribute to the upstream author at:
+#  https://github.com/dasunsrule32/radeon-scripts/tree/master/systemd
+#
+
 [Unit]
 Description=AMD Fan Control
 After=network.target
