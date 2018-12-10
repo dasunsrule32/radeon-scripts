@@ -21,6 +21,8 @@
 DEBUG=0
 SYSPATH=`find /sys/devices -name fan1_target 2>/dev/null | sed 's|/fan1_target||g' |head -n1`
 AMDGPUPMINFO=/sys/kernel/debug/dri/0/amdgpu_pm_info
+KERNELVER=$(awk -F. '{print $1$2}' <<< `uname -r`)
+KERNELREQ="415"
 
 # Functions:
 # ----------
@@ -40,6 +42,14 @@ pwm_default() {
 
 # Main body:
 # ----------
+# Check if kernel version is new enough:
+if [ $KERNELVER -lt $KERNELREQ ]; then
+   echo_text "Kernel is too old, exiting..."
+   exit 1
+else
+   echo_text "Kernel requirements met, continuing..."
+fi
+
 # Set PWM to manual control:
 echo "1" > "$SYSPATH/pwm1_enable"
 
