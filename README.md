@@ -19,6 +19,16 @@ Undervolt/OC Vega cards:
   the p-state clock and voltage to get higher clocks if you'd like.
   Be forwarned, you can damage your card though. Be judicious with
   how far you overclock.
+  
+  You can now adjust your POWERCAP for your card. It requires kernel
+  4.20+. To enable the feature, simply set `$POWERCAP = 1`. You can
+  set the wattage in the example in the main body:
+  
+      # To set the allowed maximum power consumption of the GPU to e.g. 220 Watts (Default wattage):
+      echo 220000000 > /sys/class/drm/card0/device/hwmon/hwmon0/power1_cap
+  
+  It's currently set the card default, this may need more checks if
+  more cards are introduced at a later time.
 
 
  NOTES:
