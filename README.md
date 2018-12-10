@@ -57,8 +57,8 @@ Undervolt/OC Vega cards:
  Command format:
 
   * `echo "[s|m] p-state clock voltage" > "$SYSPATH/pp_od_clk_voltage"`
-  * `echo "c" > "$SYSPATH/pp_od_clk_voltage" to commit the changes`
-  * `echo "r" > "$SYSPATH/pp_od_clk_voltage" to restore the default values`
+  * `echo "r" > $SYSPATH/pp_od_clk_voltage to restore the default values`
+  * `echo "c" > $SYSPATH/pp_od_clk_voltage to commit the changes`
 
  Install Notes:
  
