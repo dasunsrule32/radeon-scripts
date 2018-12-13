@@ -1,5 +1,5 @@
 #
-# Systemd script to autostart and control vega-undervolt-oc.
+# Systemd script to autostart and control vega-power-control.
 #
 #  authored-by: Aaron Echols
 #        email: atechols at gmail dot com
@@ -12,10 +12,10 @@
 #
 
 [Unit]
-Description=AMD Undervolt/Overclock Control
+Description=AMD Power Control
 
 [Service]
-ExecStart=/usr/local/bin/vega-undervolt-oc
+ExecStart=/usr/local/bin/vega-power-control
 
 [Install]
 WantedBy=multi-user.target

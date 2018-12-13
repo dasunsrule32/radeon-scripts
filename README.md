@@ -1,9 +1,9 @@
 # radeon-scripts
 Scripts to manage various aspects of the AMD line of cards in Linux.
 
-# vega-undervolt-oc notes
+# vega-power-control notes
 
-Undervolt/OC Vega cards:
+Set AMD Vega clock/voltage/profile settings:
 
   * Reduce temps
   * Increase performance
@@ -25,11 +25,15 @@ Undervolt/OC Vega cards:
   set the wattage in the example in the main body:
   
       # To set the allowed maximum power consumption of the GPU to e.g. 220 Watts (Default wattage):
-      echo 220000000 > /sys/class/drm/card0/device/hwmon/hwmon0/power1_cap
+      echo 220000000 > "$SYSPATH/hwmon/hwmon0/power1_cap_max"
   
   It's currently set the card default, this may need more checks if
   more cards are introduced at a later time.
 
+  Profiles have now been implemented. By default, the script is set
+  `auto` and the profile is set to `balanced`. This can easily be
+  adjusted by adjusting the values for `DEFAULTPROFILE` and `DEFAULTDPMSTATE`.
+  The different profile are options are described in the [docs](https://dri.freedesktop.org/docs/drm/gpu/amdgpu.html#gpu-power-thermal-controls-and-monitoring).
 
  NOTES:
 
@@ -72,16 +76,11 @@ Undervolt/OC Vega cards:
 
  Install Notes:
  
-  * Install Notes for vega-undervolt-oc can be found [here](https://github.com/dasunsrule32/radeon-scripts/blob/master/systemd/INSTALL-vega-underclock-oc.md).
-
-TODO:
-
-  * Add error checking
-
+  * Install Notes for vega-power-control can be found [here](https://github.com/dasunsrule32/radeon-scripts/blob/master/systemd/INSTALL-vega-power-control.md).
 
 # vega-fan-control notes
 
-Script to set Sapphire RX Vega 64 (Reference) fan curve.
+Script to set AMD card fan curves.
 
 NOTES:
 
