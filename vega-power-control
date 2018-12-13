@@ -86,7 +86,7 @@ elif [ "$DEFAULTDPMSTATE" == "manual" ]; then
       if [ $POWERCAP -eq 1 ]; then
          echo_text "Adjusting AMD  Power Cap"
          # To set the allowed maximum power consumption of the GPU to e.g. 220 Watts (Default wattage):
-         echo 220000000 > "$SYSPATH/hwmon/hwmon0/power1_cap_max"
+         echo 220000000 > "$SYSPATH/hwmon/hwmon0/power1_cap"
       fi
    fi
    # Commit power changes:
