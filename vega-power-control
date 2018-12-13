@@ -26,6 +26,38 @@ KERNELREQPOW="420"
 POWERCAP="0" # Enable (1) or Disable (0) AMD powercap settings, requires DEFAULTDPMPERFLVL set to manual.
 DEFAULTDPMSTATE="balanced" # Set power profile, options: battery (Won't work with discrete cards), balanced, performance.
 DEFAULTDPMPERFLVL="auto" # Default to auto, possible options are: auto, low, high, manual. See docs for more options.
+HWDEVID=`cat $SYSPATH/device | cut -c 3-` # Get Subsystem device ID for card.
+SUBSYSDEV=`cat $SYSPATH/subsystem_device | cut -c 3-` # Get Subsystem device ID for card.
+SUBSYSVEN=`cat $SYSPATH/subsystem_vendor | cut -c 3-` # Get Subsystem vendor ID for card.
+SUBSYSID="$SUBSYSVEN:$SUBSYSDEV" # Get Subsystem ID for card.
+HWID="$SUBSYSVEN:$HWDEVID" # Get hardware ID for card.
+
+# Constant Variables:
+# ------------------
+# Vendor IDs:
+# Reference: https://www.amd.com/en/support/kb/faq/gpu-55#faq-Subsystem-Vendor-ID-and-Device-ID
+# Device hunt: https://devicehunt.com
+AMD="1002"
+ASUSTEK="1043"
+CLUB3D="196D"
+DIAMOND="1092"
+GECUBE="18BC"
+GIGABYTE="17AF"
+HIS="17AF"
+JETWAY="16F3"
+MSI="1462"
+SAPPHIRE="1DA2"
+POWERCOLOR="148C"
+VISIONTEK="1545"
+XFX="1682"
+ACER="1025"
+APPLE="106B"
+DELL="1028"
+GATEWAY="107B"
+HP="103C"
+LENOVO="17AA"
+SONY="104D"
+TOSHIBA="1179"
 
 # Functions:
 # ----------
@@ -42,6 +74,12 @@ if [ $KERNELVER -lt $KERNELREQ ]; then
    exit 1
 else
    echo_text "Kernel requirements met, continuing..."
+fi
+
+# Echo Hardware/Subsystem ID when DEBUG is enabled:
+if [ $DEBUG -eq 1 ]; then
+   echo_text "Device ID: $HWID"
+   echo_text "Subsystem ID: $SUBSYSID"
 fi
 
 # Set profile (auto|manual):
@@ -66,6 +104,10 @@ if [ "$DEFAULTDPMPERFLVL" == "auto" ]; then
    echo_text "Setting profile to: $DEFAULTDPMSTATE..."
    echo "$DEFAULTDPMSTATE" > "$SYSPATH/power_dpm_state"
 elif [ "$DEFAULTDPMPERFLVL" == "manual" ]; then
+   # TODO: Add for loop to use custom values for p-states, clocks and volt-
+   # ages per device. We can use an array to get the values for specific cards.
+   # This will require the refactoring of device/model detecttion.
+   #
    # Set GPU frequencies/voltages:
    echo_text "Applying custom power settings..."
    echo "$DEFAULTDPMPERFLVL" > "$SYSPATH/power_dpm_force_performance_level"
