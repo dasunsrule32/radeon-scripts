@@ -18,11 +18,11 @@
 
 # Variables:
 # ----------
-DEBUG=0
-SYSPATH=`find /sys/devices -name pp_od_clk_voltage 2>/dev/null | sed 's|/pp_od_clk_voltage||g' |head -n1`
-KERNELVER=$(awk -F. '{print $1$2}' <<< `uname -r`)
-KERNELREQ="415"
-KERNELREQPOW="420"
+DEBUG=0 # Enable (1) or Disable (0) DEBUG.
+SYSPATH=`find /sys/devices -name pp_od_clk_voltage 2>/dev/null | sed 's|/pp_od_clk_voltage||g' |head -n1` # Autodetect SYSFS path.
+KERNELVER=$(awk -F. '{print $1$2}' <<< `uname -r`) # Get kernel version.
+KERNELREQ="415" # Minimum required kernel version for script.
+KERNELREQPOW="420" # Kernel version required for POWERCAP control.
 POWERCAP="0" # Enable (1) or Disable (0) AMD powercap settings, requires DEFAULTDPMPERFLVL set to manual.
 DEFAULTDPMSTATE="balanced" # Set power profile, options: battery (Won't work with discrete cards), balanced, performance.
 DEFAULTDPMPERFLVL="auto" # Default to auto, possible options are: auto, low, high, manual. See docs for more options.

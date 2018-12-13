@@ -18,11 +18,11 @@
 
 # Variables:
 # ----------
-DEBUG=0
-SYSPATH=`find /sys/devices -name fan1_target 2>/dev/null | sed 's|/fan1_target||g' |head -n1`
+DEBUG=0 # Enable (1) or Disable (0) DEBUG.
+SYSPATH=`find /sys/devices -name fan1_target 2>/dev/null | sed 's|/fan1_target||g' |head -n1` # Autodetect SYSFS path.
 AMDGPUPMINFO=/sys/kernel/debug/dri/0/amdgpu_pm_info
-KERNELVER=$(awk -F. '{print $1$2}' <<< `uname -r`)
-KERNELREQ="415"
+KERNELVER=$(awk -F. '{print $1$2}' <<< `uname -r`) # Get kernel version.
+KERNELREQ="415" # Minimum required kernel version for script.
 
 # Functions:
 # ----------
