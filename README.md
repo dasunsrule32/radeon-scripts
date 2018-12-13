@@ -31,9 +31,9 @@ Set AMD Vega clock/voltage/profile settings:
   more cards are introduced at a later time.
 
   Profiles have now been implemented. By default, the script is set
-  `auto` and the profile is set to `balanced`. This can easily be
-  adjusted by adjusting the values for `DEFAULTPROFILE` and `DEFAULTDPMSTATE`.
-  The different profile options are described in the [docs](https://dri.freedesktop.org/docs/drm/gpu/amdgpu.html#gpu-power-thermal-controls-and-monitoring).
+  `auto` and the profile is set to `balanced` (`DEFAULTDPMSTATE` is there for legacy
+  support only). This can easily be adjusted by adjusting the values for `DEFAULTDPMSTATE`
+  and `DEFAULTDPMPERFLVL`. The different profile options are described in the [docs](https://dri.freedesktop.org/docs/drm/gpu/amdgpu.html#gpu-power-thermal-controls-and-monitoring).
 
  NOTES:
 
