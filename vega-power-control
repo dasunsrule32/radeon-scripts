@@ -106,7 +106,7 @@ if [ "$DEFAULTDPMPERFLVL" == "auto" ]; then
 elif [ "$DEFAULTDPMPERFLVL" == "manual" ]; then
    # TODO: Add for loop to use custom values for p-states, clocks and volt-
    # ages per device. We can use an array to get the values for specific cards.
-   # This will require the refactoring of device/model detecttion.
+   # This will require the refactoring of device/model detection.
    #
    # Set GPU frequencies/voltages:
    echo_text "Applying custom power settings..."
