@@ -68,10 +68,16 @@ echo_text() {
 
 # Main body:
 # ----------
+# Check if root:
+if [[ $EUID -ne 0 ]]; then
+   echo_text "You need to be root to run this script..."
+   exit 1
+fi
+
 # Check if kernel version is new enough:
 if [ $KERNELVER -lt $KERNELREQ ]; then
    echo_text "Kernel is too old, exiting..."
-   exit 1
+   exit 2
 else
    echo_text "Kernel requirements met, continuing..."
 fi
