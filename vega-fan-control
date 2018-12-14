@@ -96,8 +96,8 @@ do
    # Set the RPM in the sys device for AMD fancontrol:
    echo "$FANRPM" > "$SYSPATH/fan1_target"
 
-   # Wait 3 seconds to re-evaluate temperatures:
-   sleep 3s
+   # Wait 2 seconds to re-evaluate temperatures:
+   sleep 2s
 
    # Debug output:
    if [ $DEBUG -eq 1 ]; then
