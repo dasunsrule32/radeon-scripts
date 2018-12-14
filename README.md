@@ -87,16 +87,33 @@ NOTES:
   To adjust the `FANRPM`, simply edit the following block in the script to the
   desired RPM for each temperature range.
   
-     case $GPUTEMP in
-      2[0-9]) FANRPM=400  ;;
-      3[0-9]) FANRPM=1000 ;;
-      4[0-9]) FANRPM=1300 ;;
-      5[0-9]) FANRPM=1700 ;;
-      6[0-9]) FANRPM=2200 ;;
-      7[0-9]) FANRPM=2800 ;;
-      8[0-6]) FANRPM=3100 ;;
-           *) FANRPM=3400 ;;
-     esac
+     if [ "$GPUTEMP" -ge "20" ] && [ "$GPUTEMP" -le "24" ]; then
+        FANRPM=400
+     elif [ "$GPUTEMP" -ge "25" ] && [ "$GPUTEMP" -le "29" ]; then
+        FANRPM=600
+     elif [ "$GPUTEMP" -ge "30" ] && [ "$GPUTEMP" -le "34" ]; then
+        FANRPM=800
+     elif [ "$GPUTEMP" -ge "35" ] && [ "$GPUTEMP" -le "39" ]; then
+        FANRPM=1200
+     elif [ "$GPUTEMP" -ge "40" ] && [ "$GPUTEMP" -le "44" ]; then
+        FANRPM=1600
+     elif [ "$GPUTEMP" -ge "44" ] && [ "$GPUTEMP" -le "49" ]; then
+        FANRPM=1800
+     elif [ "$GPUTEMP" -ge "50" ] && [ "$GPUTEMP" -le "54" ]; then
+        FANRPM=2000
+     elif [ "$GPUTEMP" -ge "55" ] && [ "$GPUTEMP" -le "59" ]; then
+        FANRPM=2200
+     elif [ "$GPUTEMP" -ge "60" ] && [ "$GPUTEMP" -le "64" ]; then
+        FANRPM=2400
+     elif [ "$GPUTEMP" -ge "65" ] && [ "$GPUTEMP" -le "69" ]; then
+        FANRPM=2600
+     elif [ "$GPUTEMP" -ge "70" ] && [ "$GPUTEMP" -le "74" ]; then
+        FANRPM=2800
+     elif [ "$GPUTEMP" -ge "75" ] && [ "$GPUTEMP" -le "79" ]; then
+        FANRPM=3000
+     elif [ "$GPUTEMP" -ge "80" ] && [ "$GPUTEMP" -le "86" ]; then
+        FANRPM=3200
+     fi
   
   To watch temperatures, simply enable `DEBUG` in the script if running it manually.
   You can also watch the temps via sysfs and use the following command:
