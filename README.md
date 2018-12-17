@@ -118,8 +118,8 @@ NOTES:
   To watch temperatures, simply enable `DEBUG` in the script if running it manually.
   You can also watch the temps via sysfs and use the following command:
   
-        SYSPATH=$(awk '{print}' <<< `find /sys/devices -name power_dpm_force_performance_level -type f -exec dirname {} \;`) ; AMDGPUPMINFO=/sys/kernel/debug/dri/0/amdgpu_pm_info
-        watch -n 1 "sudo cat $AMDGPUPMINFO|grep 'GPU Temperature' ; cat $SYSPATH/hwmon/hwmon0/fan1_target"
+        SYSPATH=$(awk '{print}' <<< `find /sys/devices -name power_dpm_force_performance_level -type f -exec dirname {} \;`)
+        watch -t -n 1 "awk '{print \$1/(1000)}' $SYSPATH/hwmon/hwmon0/temp1_input && cat $SYSPATH/hwmon/hwmon0/fan1_target"
 
 Install Notes:
 
