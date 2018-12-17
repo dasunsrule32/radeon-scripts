@@ -28,9 +28,9 @@ KERNELREQPOW="420" # Kernel version required for POWERCAP control.
 POWERCAP="0" # Enable (1) or Disable (0) AMD powercap settings, requires DEFAULTDPMPERFLVL set to manual.
 DEFAULTDPMSTATE="balanced" # Set power profile, options: battery (Won't work with discrete cards), balanced, performance.
 DEFAULTDPMPERFLVL="auto" # Default to auto, possible options are: auto, low, high, manual. See docs for more options.
-HWDEVID=`cat $SYSPATH/device | cut -c 3-` # Get device ID for card.
-SUBSYSDEV=`cat $SYSPATH/subsystem_device | cut -c 3-` # Get Subsystem device ID for card.
-SUBSYSVEN=`cat $SYSPATH/subsystem_vendor | cut -c 3-` # Get Subsystem vendor ID for card.
+HWDEVID=`cut -c 3- <<< cat $SYSPATH/device` # Get device ID for card.
+SUBSYSDEV=`cut -c 3- <<< cat $SYSPATH/subsystem_device` # Get Subsystem device ID for card.
+SUBSYSVEN=`cut -c 3- <<< cat $SYSPATH/subsystem_vendor` # Get Subsystem vendor ID for card.
 SUBSYSID="$SUBSYSVEN:$SUBSYSDEV" # Get Subsystem ID for card.
 HWID="$SUBSYSVEN:$HWDEVID" # Get hardware ID for card.
 
