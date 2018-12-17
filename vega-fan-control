@@ -19,7 +19,9 @@
 # Variables:
 # ----------
 DEBUG=0 # Enable (1) or Disable (0) DEBUG.
-SYSPATH=`find /sys/devices -name fan1_target 2>/dev/null | sed 's|/fan1_target||g' |head -n1` # Autodetect SYSFS path.
+AMDSYSFILE="power_dpm_force_performance_level" # AMD SYSFS file to search for.
+SYSPATH=$(awk '{print}' <<< `find /sys/devices -name $AMDSYSFILE -type f -exec dirname {} \;`) # Autodetect SYSFS path.
+HWMONPATH="hwmon/hwmon0"
 KERNELVER=$(awk -F. '{print $1$2}' <<< `uname -r`) # Get kernel version.
 KERNELREQ="415" # Minimum required kernel version for script.
 
@@ -33,9 +35,9 @@ echo_text() {
 # Restore default PWM settings on exit:
 pwm_default() {
    echo_text "\nRestoring PWM defaults"
-   echo "2" > "$SYSPATH/pwm1_enable"
+   echo "2" > "$SYSPATH/$HWMONPATH/pwm1_enable"
    if [ $DEBUG = 1 ]; then
-      cat $SYSPATH/pwm1_enable
+      cat $SYSPATH/$HWMONPATH/pwm1_enable
    fi
 }
 
@@ -56,7 +58,7 @@ else
 fi
 
 # Set PWM to manual control:
-echo "1" > "$SYSPATH/pwm1_enable"
+echo "1" > "$SYSPATH/$HWMONPATH/pwm1_enable"
 
 # On exit set default fan controls:
 trap "pwm_default" EXIT 
@@ -67,7 +69,7 @@ fi
 while :
 do
    # Get GPU temperatures:
-   GPUTEMP=`awk '{print $1/(1000)}' $SYSPATH/temp1_input`
+   GPUTEMP=`awk '{print $1/(1000)}' $SYSPATH/$HWMONPATH/temp1_input`
 
    # Set RPM based on temperature range:
    if [ "$GPUTEMP" -ge "20" ] && [ "$GPUTEMP" -le "24" ]; then
@@ -99,7 +101,7 @@ do
    fi
 
    # Set the RPM in the sys device for AMD fancontrol:
-   echo "$FANRPM" > "$SYSPATH/fan1_target"
+   echo "$FANRPM" > "$SYSPATH/$HWMONPATH/fan1_target"
 
    # Wait 2 seconds to re-evaluate temperatures:
    sleep 2s
@@ -110,9 +112,9 @@ do
       echo_text " Fan RPM: $FANRPM"
    fi
    # Workaround for issue: https://github.com/dasunsrule32/radeon-scripts/issues/3
-   GET_PWM1=`cat $SYSPATH/pwm1_enable`
+   GET_PWM1=`cat $SYSPATH/$HWMONPATH/pwm1_enable`
    if [ "$GET_PWM1" -eq 2 ]; then
-      echo "1" > "$SYSPATH/pwm1_enable"
+      echo "1" > "$SYSPATH/$HWMONPATH/pwm1_enable"
       echo_text "\nRe-enabling fan control"
    fi
 done
