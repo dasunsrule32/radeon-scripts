@@ -25,7 +25,7 @@ Set AMD Vega clock/voltage/profile settings:
   set the wattage in the example in the main body:
   
       # To set the allowed maximum power consumption of the GPU to e.g. 220 Watts (Default wattage):
-      echo 220000000 > "$SYSPATH/hwmon/hwmon0/power1_cap_max"
+      echo 220000000 > "$SYSPATH/$HWMONPATH/power1_cap"
   
   It's currently set the card default, this may need more checks if
   more cards are introduced at a later time.
