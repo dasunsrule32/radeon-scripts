@@ -12,7 +12,7 @@
 #
 
 [Unit]
-Description=AMD Fan Control
+Description=AMD GPU Fan Control
 After=network.target
 StartLimitIntervalSec=0
 [Service]

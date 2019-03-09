@@ -12,7 +12,7 @@
 #
 
 [Unit]
-Description=AMD Power Control
+Description=AMD GPU Power Control
 
 [Service]
 ExecStart=/usr/local/bin/vega-power-control
