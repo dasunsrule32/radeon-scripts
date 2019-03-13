@@ -22,7 +22,7 @@ DEBUG=0 # Enable (1) or Disable (0) DEBUG.
 AMDSYSFILE="power_dpm_force_performance_level" # AMD SYSFS file to search for.
 SYSPATH=$(awk '{print}' <<< `find /sys/devices -name $AMDSYSFILE -type f -exec dirname {} \;`) # Autodetect SYSFS path.
 HWMONPATH="hwmon/hwmon0"
-KERNELVER=$(awk -F. '{print $1$2}' <<< `uname -r`) # Get kernel version.
+KERNELVER=$(awk -F. '{printf("%d%02d\n", $1, $2)}' <<< `uname -r`) # Get kernel version.
 KERNELREQ="415" # Minimum required kernel version for script.
 
 # Functions:
