@@ -34,6 +34,24 @@ SUBSYSVEN=`cut -c 3- <<< cat $SYSPATH/subsystem_vendor` # Get Subsystem vendor I
 SUBSYSID="$SUBSYSVEN:$SUBSYSDEV" # Get Subsystem ID for card.
 HWID="$SUBSYSVEN:$HWDEVID" # Get hardware ID for card.
 
+typeset -A CORE_TABLE=(
+	[0]="852 800"
+	[1]="991 900"  # core states 0-7 clock and voltge
+	[2]="1084 910"
+	[3]="1138 930"
+	[4]="1200 945"
+	[5]="1400 955"
+	[6]="1500 970"
+	[7]="1600 1000"
+)
+
+typeset -A MEM_TABLE=(
+	[0]="167 800"
+	[1]="500 850"   # mem states 0-3 clock and core voltage floor, the hbm never
+	[2]="800 910"   # actually goes below 1.35v, this changes the lower voltage floor for the core
+	[3]="1000 1000"
+)
+
 # Constant Variables:
 # ------------------
 # Vendor IDs:
@@ -112,27 +130,16 @@ if [ "$DEFAULTDPMPERFLVL" == "auto" ]; then
    echo_text "Setting profile to: $DEFAULTDPMSTATE..."
    echo "$DEFAULTDPMSTATE" > "$SYSPATH/power_dpm_state"
 elif [ "$DEFAULTDPMPERFLVL" == "manual" ]; then
-   # TODO: Add for loop to use custom values for p-states, clocks and volt-
-   # ages per device. We can use an array to get the values for specific cards.
+   # TODO: Add custom values to arrays for specific cards.
    # This will require the refactoring of device/model detection.
    #
-   # Set GPU frequencies/voltages:
+   # Set GPU/HBM frequencies/voltages:
    echo_text "Applying custom power settings..."
    echo "$DEFAULTDPMPERFLVL" > "$SYSPATH/power_dpm_force_performance_level"
-   echo "s 0 852 800" > "$SYSPATH/pp_od_clk_voltage"
-   echo "s 1 991 900" > "$SYSPATH/pp_od_clk_voltage"
-   echo "s 2 1084 910" > "$SYSPATH/pp_od_clk_voltage"
-   echo "s 3 1138 930" > "$SYSPATH/pp_od_clk_voltage"
-   echo "s 4 1200 945" > "$SYSPATH/pp_od_clk_voltage"
-   echo "s 5 1400 955" > "$SYSPATH/pp_od_clk_voltage"
-   echo "s 6 1500 970" > "$SYSPATH/pp_od_clk_voltage"
-   echo "s 7 1600 1000" > "$SYSPATH/pp_od_clk_voltage"
-
-   # Set memory frequencies/voltages:
-   echo "m 0 167 800" > "$SYSPATH/pp_od_clk_voltage"
-   echo "m 1 500 850" > "$SYSPATH/pp_od_clk_voltage"
-   echo "m 2 800 910" > "$SYSPATH/pp_od_clk_voltage"
-   echo "m 3 1000 1000" > "$SYSPATH/pp_od_clk_voltage"
+   for ((i = 0; i <= 7; i++)); do
+       [[ ${CORE_TABLE[$i]} ]] && echo "s $i ${CORE_TABLE[$i]}" > "$SYSPATH/pp_od_clk_voltage"
+       [[ $i -le 3 && ${MEM_TABLE[$i]} ]] && echo "m $i ${MEM_TABLE[$i]}" > "$SYSPATH/pp_od_clk_voltage"
+   done
 
    # Set Power consumption - Requires Kernel 4.20+:
    if [ $KERNELVER -ge $KERNELREQPOW ]; then
